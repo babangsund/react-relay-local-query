@@ -1,0 +1,73 @@
+{
+  "name": "react-relay-local-query",
+  "version": "0.1.0",
+  "description": "Local queries for react-relay",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "author": "babangsund",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/babangsund/react-relay-local-query#readme",
+  "bugs": {
+    "url": "https://github.com/babangsund/react-relay-local-query/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production rollup -c",
+    "watch": "NODE_ENV=development rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/babangsund/react-relay-local-query.git"
+  },
+  "keywords": [
+    "react",
+    "relay",
+    "local",
+    "state",
+    "query",
+    "hooks",
+    "react-relay",
+    "useLocalQuery",
+    "LocalQueryRenderer"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-relay": "^5.0.0",
+    "relay-runtime": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.0",
+    "babel-plugin-dev-expression": "^0.2.2",
+    "eslint": "^6.0.0",
+    "eslint-config-fbjs": "^3.0.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-flowtype": "^3.0.0",
+    "eslint-plugin-jsx-a11y": "^6.0.0",
+    "eslint-plugin-react": "^7.0.0",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "fbjs": "^1.0.0",
+    "flow-bin": "^0.102.0",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-relay": "^5.0.0",
+    "relay-runtime": "^5.0.0",
+    "rollup": "^1.17.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1"
+  }
+}
