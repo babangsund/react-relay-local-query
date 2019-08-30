@@ -1,4 +1,28 @@
-// @flow
+/**
+ * @public
+ *
+ * Query local data without a network request.
+ * Example usage:
+ *
+ * <LocalQueryRenderer
+ *   environment={environment}
+ *   query={graphql`
+ *     query AppQuery {
+ *       viewer {
+ *         __typename
+ *         someLocalField
+ *       }
+ *     }
+ *   `}
+ *   render={({props}) => {
+ *     return (
+ *       <div>{props.viewer.someLocalField}</div>
+ *     );
+ *   }}
+ * />;
+ *
+ * @flow
+ */
 
 'use strict';
 

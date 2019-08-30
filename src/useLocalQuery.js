@@ -1,4 +1,23 @@
-// @flow
+/**
+ * @public
+ *
+ * Query local data without a network request.
+ * Example usage:
+ *
+ * const {viewer} = useLocalQuery({
+ *   environment,
+ *   query: graphql`
+ *     query AppQuery {
+ *       viewer {
+ *         __typename
+ *         someLocalField
+ *       }
+ *     }
+ *   `
+ * });
+ *
+ * @flow
+ */
 
 'use strict';
 
