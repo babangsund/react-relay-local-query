@@ -1,4 +1,14 @@
-// @flow
+/**
+ * @private
+ *
+ * Use deep comparison to memoize object reference value.
+ * Returns true if both arguments have the same keys and values.
+ * Example usage:
+ *
+ * const cachedObject = useDeepCompare(myObject);
+ *
+ * @flow
+ */
 
 'use strict';
 
