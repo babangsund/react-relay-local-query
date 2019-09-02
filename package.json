@@ -1,6 +1,6 @@
 {
   "name": "react-relay-local-query",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Local queries for react-relay",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
