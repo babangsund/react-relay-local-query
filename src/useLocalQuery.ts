@@ -16,26 +16,29 @@
  *   `
  * });
  *
- * @flow
  */
 
-'use strict';
+import { useRef, useMemo, useState, useLayoutEffect } from 'react';
+import {
+  Variables,
+  getRequest,
+  IEnvironment,
+  SelectorData,
+  GraphQLTaggedNode,
+  createOperationDescriptor,
+} from 'relay-runtime';
 
+// project
 import useDeepCompare from './useDeepCompare';
-import {useRef, useMemo, useState, useLayoutEffect} from 'react';
-import {getRequest, createOperationDescriptor} from 'relay-runtime';
-
-import type {Node} from 'react';
-import type {GraphQLTaggedNode, IEnvironment, Variables} from 'relay-runtime';
 
 type Props = {
-  environment: IEnvironment,
-  query: GraphQLTaggedNode,
-  variables: Variables,
+  environment: IEnvironment;
+  query: GraphQLTaggedNode;
+  variables: Variables;
 };
 
-function useLocalQuery(props: Props): Node {
-  const {environment, query, variables} = props;
+function useLocalQuery(props: Props): SelectorData | null {
+  const { environment, query, variables } = props;
   const latestVariables = useDeepCompare(variables);
   const operation = useMemo(() => {
     const request = getRequest(query);
@@ -44,13 +47,13 @@ function useLocalQuery(props: Props): Node {
 
   // Use a ref to prevent rendering twice when data changes
   // because of props change
-  const dataRef = useRef(null);
-  const [, forceUpdate] = useState(null);
-  const cleanupFnRef = useRef(null);
+  const dataRef = useRef<SelectorData | null>(null);
+  const cleanupFnRef = useRef<(() => void) | null>(null);
+  const [, forceUpdate] = useState<SelectorData | null>(null);
 
   const snapshot = useMemo(() => {
     environment.check(operation.root);
-    const res = environment.lookup(operation.fragment, operation);
+    const res = environment.lookup(operation.fragment);
     dataRef.current = res.data;
 
     // Run effects here so that the data can be retained
@@ -61,7 +64,7 @@ function useLocalQuery(props: Props): Node {
       forceUpdate(dataRef.current);
     });
     let disposed = false;
-    function nextCleanupFn() {
+    function nextCleanupFn(): void {
       if (!disposed) {
         disposed = true;
         cleanupFnRef.current = null;
