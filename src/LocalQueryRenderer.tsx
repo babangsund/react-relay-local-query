@@ -20,30 +20,23 @@
  *     );
  *   }}
  * />;
- *
- * @flow
  */
+import React, { useMemo } from 'react';
+import { ReactRelayContext } from 'react-relay';
+import { GraphQLTaggedNode, IEnvironment, Variables, SelectorData } from 'relay-runtime';
 
-'use strict';
-
-import React, {useMemo} from 'react';
-import {ReactRelayContext} from 'react-relay';
-
-import type {Node} from 'react';
-import type {GraphQLTaggedNode, IEnvironment, Variables} from 'relay-runtime';
-
+// project
 import useLocalQuery from './useLocalQuery';
 
 type Props = {
-  environment: IEnvironment,
-  query: GraphQLTaggedNode,
-  // $FlowFixMe
-  render: ({props: ?Object}) => Node,
   variables: Variables,
+  query: GraphQLTaggedNode,
+  environment: IEnvironment,
+  render: ({ props }: { props: SelectorData | null }) => React.ReactNode,
 };
 
-function LocalQueryRenderer(props: Props): Node {
-  const {environment, query, variables, render} = props;
+function LocalQueryRenderer(props: Props): React.ReactNode {
+  const { environment, query, variables, render } = props;
 
   const localQuery = useLocalQuery({
     query,
@@ -61,7 +54,7 @@ function LocalQueryRenderer(props: Props): Node {
 
   return (
     <ReactRelayContext.Provider value={relayContext}>
-      {render({props: localQuery})}
+      {render({ props: localQuery })}
     </ReactRelayContext.Provider>
   );
 }
