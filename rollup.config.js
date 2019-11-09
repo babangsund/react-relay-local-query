@@ -1,11 +1,12 @@
 import babel from 'rollup-plugin-babel';
-import {terser} from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 import commonjs from 'rollup-plugin-commonjs';
+import typescript from 'rollup-plugin-typescript';
 import nodeResolve from 'rollup-plugin-node-resolve';
 
 import pkg from './package.json';
 
-const input = 'src/index.js';
+const input = 'src/index.ts';
 const globals = {
   react: 'React',
   'react-relay': 'ReactRelay',
@@ -34,9 +35,10 @@ export default {
     babel({
       runtimeHelpers: true,
       exclude: 'node_modules/**',
-      plugins: [['@babel/transform-runtime', {useESModules: true}]],
+      plugins: [['@babel/transform-runtime', { useESModules: true }]],
     }),
     nodeResolve(),
+    typescript(),
     commonjs(),
     process.env.NODE_ENV === 'production' && terser(license),
   ],
