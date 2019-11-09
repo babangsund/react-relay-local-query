@@ -6,17 +6,13 @@
  * Example usage:
  *
  * const cachedObject = useDeepCompare(myObject);
- *
- * @flow
  */
-
-'use strict';
 
 import React from 'react';
 import areEqual from 'fbjs/lib/areEqual';
-import {deepFreeze} from 'relay-runtime';
+import { deepFreeze } from 'relay-runtime';
 
-function useDeepCompare<T: {}>(value: T): T {
+function useDeepCompare<T extends object>(value: T): T {
   const latestValue = React.useRef(value);
   if (!areEqual(latestValue.current, value)) {
     if (__DEV__) {
