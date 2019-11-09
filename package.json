@@ -48,6 +48,9 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.6.3",
+    "@types/node": "^12.12.7",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
     "babel-eslint": "^10.0.3",
     "babel-plugin-dev-expression": "^0.2.2",
     "eslint": "^6.6.0",
@@ -68,6 +71,8 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.1.2"
+    "rollup-plugin-terser": "^5.1.2",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.2"
   }
 }
